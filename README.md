@@ -1,10 +1,10 @@
 # SpriteColorsEditorAOE
 
-A simple sprite colors editor for Age of Empires II: Definitive Edition
-Import a spritecolors.json file (spritecolors_deuteranopia, spritecolors_protanopia, etc. work too)
+A simple sprite colors editor for __Age of Empires II: Definitive Edition__ <br />
+Import a spritecolors.json file (spritecolors_deuteranopia, spritecolors_protanopia, etc. work too) <br />
 Change the Outline and Player Color for each Player (Gaia, Player 1, Player 2, etc.)
 
-example spritecolors.json
+### Example spritecolors.json
 
 ```json
 {
@@ -34,3 +34,7 @@ example spritecolors.json
 ```
 
 tested for Update 108769
+
+---
+![ui example](https://i.imgur.com/yuEy5Ca.png)
+Implemented using WPF

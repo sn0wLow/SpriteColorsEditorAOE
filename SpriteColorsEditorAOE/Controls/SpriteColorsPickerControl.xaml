@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="SpriteColorsEditorAOE.SpriteColorsPickerControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SpriteColorsEditorAOE"
+             mc:Ignorable="d" 
+             Width="250" Height="325">
+    <Grid Background="Transparent" Cursor="Hand">
+        <Border BorderThickness="2" CornerRadius="10">
+            <Border.BorderBrush>
+                <DrawingBrush Viewport="0,0,8,8" ViewportUnits="Absolute" TileMode="Tile">
+                    <DrawingBrush.Drawing>
+                        <DrawingGroup>
+                            <GeometryDrawing Brush="LightGray">
+                                <GeometryDrawing.Geometry>
+                                    <GeometryGroup>
+                                        <RectangleGeometry Rect="0,0,50,50" />
+                                        <RectangleGeometry Rect="50,50,50,50" />
+                                    </GeometryGroup>
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                        </DrawingGroup>
+                    </DrawingBrush.Drawing>
+                </DrawingBrush>
+            </Border.BorderBrush>
+
+            <Grid>
+                <StackPanel>
+                    <Viewbox VerticalAlignment="Top">
+                        <TextBlock Name="tBlockIcon" Text="{StaticResource FAFileCode}" FontFamily="{StaticResource FontAwesomeRegular}" Foreground="LightGray" Margin="2.5 1 2.5 0"/>
+                    </Viewbox>
+                    <TextBlock Name="tBlockXML" Text="json" FontFamily="{StaticResource FontAwesomeRegular}" HorizontalAlignment="Center" FontSize="36" Margin="0 5 0 0" Foreground="LightGray"/>
+                </StackPanel>
+
+
+                <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2.5 10">
+
+                    <TextBlock Text="Choose a spritecolors file" Foreground="White" FontWeight="Bold"/>
+
+
+                </StackPanel>
+            </Grid>
+
+        </Border>
+    </Grid>
+
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="MouseEnter">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ColorAnimation Duration="0:0:0.3" Storyboard.TargetName="tBlockIcon" 
+                                            Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" To="#FF196FE0" />
+                        <ColorAnimation Duration="0:0:0.3" Storyboard.TargetName="tBlockXML" 
+                                            Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" To="#FF196FE0" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="MouseLeave">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ColorAnimation Duration="0:0:0.3" Storyboard.TargetName="tBlockIcon" 
+                                            Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" To="LightGray" />
+                        <ColorAnimation Duration="0:0:0.3" Storyboard.TargetName="tBlockXML" 
+                                            Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" To="LightGray" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </UserControl.Triggers>
+</UserControl>

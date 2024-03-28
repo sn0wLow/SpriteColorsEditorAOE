@@ -1,0 +1,124 @@
+﻿<UserControl x:Class="SpriteColorsEditorAOE.PlayerColorsEditorControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SpriteColorsEditorAOE"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance local:PlayerColorItemDesignModel, IsDesignTimeCreatable=True}"
+              d:DesignWidth="800" d:DesignHeight="500" Width="800" Height="500">
+    <UserControl.Resources>
+        <Style x:Key="ContentStyle" TargetType="{x:Type ContentControl}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ContentControl}">
+                        <Grid Background="#FF1A1A1A" Margin="30">
+                            <Grid.Effect>
+                                <DropShadowEffect BlurRadius="30" Direction="180" Opacity="0.75"/>
+                            </Grid.Effect>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <!--<Grid.DataContext>
+                                <local:HomeSlotItemDesignModel/>
+                            </Grid.DataContext>-->
+
+                            <Grid Grid.Column="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Viewbox Grid.Row="0"  MaxHeight="50" Margin="5">
+                                    <TextBlock  Text="{Binding PlayerName}" 
+                                       Foreground="LightGray" FontWeight="Bold"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Viewbox>
+                                <Viewbox Grid.Row="1" MaxHeight="25" Margin="5">
+                                    <TextBlock  Text="Team Colors" 
+                                       Foreground="LightGray" FontWeight="Bold"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Viewbox>
+
+                                <StackPanel Grid.Row="2" Margin="20">
+                                    <TextBlock Text="R" Foreground="LightGray" FontWeight="Bold" FontSize="32"/>
+                                    <Slider Style="{StaticResource SliderWithValue}" Height="25" 
+                                        Background="#FF383838" Value="{Binding Path=TeamColors.FloatRGBA.R, Converter={local:FloatToRGBConverter}}"
+                                        Foreground="{Binding Path=TeamColors.FloatRGBA, Converter={local:FloatRGBToColorConverter}}"
+                                        Margin="0 0 0 15" Maximum="255"/>
+
+                                    <TextBlock Text="G" Foreground="LightGray" FontWeight="Bold" FontSize="32"/>
+                                    <Slider Style="{StaticResource SliderWithValue}" Height="25" 
+                                        Background="#FF383838" Value="{Binding Path=TeamColors.FloatRGBA.G, Converter={local:FloatToRGBConverter}}"
+                                        Foreground="{Binding Path=TeamColors.FloatRGBA, Converter={local:FloatRGBToColorConverter}}"
+                                        Margin="0 0 0 15" Maximum="255"/>
+
+                                    <TextBlock Text="B" Foreground="LightGray" FontWeight="Bold" FontSize="32"/>
+                                    <Slider Style="{StaticResource SliderWithValue}" Height="25" 
+                                        Background="#FF383838" Value="{Binding Path=TeamColors.FloatRGBA.B, Converter={local:FloatToRGBConverter}}"
+                                        Foreground="{Binding Path=TeamColors.FloatRGBA, Converter={local:FloatRGBToColorConverter}}"
+                                        Margin="0 0 0 15" Maximum="255"/>
+
+                                    <TextBlock Text="A" Foreground="LightGray" FontWeight="Bold" FontSize="32"/>
+                                    <Slider Style="{StaticResource SliderWithValue}" Height="25" 
+                                        Background="#FF383838" Value="{Binding Path=TeamColors.FloatRGBA.A, Converter={local:FloatToRGBConverter}}"
+                                        Foreground="{Binding Path=TeamColors.FloatRGBA, Converter={local:FloatRGBToColorConverter}}"
+                                        Margin="0 0 0 15" Maximum="255"/>
+                                </StackPanel>
+                            </Grid>
+
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Viewbox Grid.Row="0"  MaxHeight="50" Margin="5">
+                                    <TextBlock  Text="{Binding PlayerName}" 
+                                       Foreground="LightGray" FontWeight="Bold"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Viewbox>
+                                <Viewbox Grid.Row="1" MaxHeight="25" Margin="5">
+                                    <TextBlock  Text="Outline Colors" 
+                                       Foreground="LightGray" FontWeight="Bold"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Viewbox>
+
+                                <StackPanel Grid.Row="2" Margin="20">
+                                    <TextBlock Text="R" Foreground="LightGray" FontWeight="Bold" FontSize="32"/>
+                                    <Slider Style="{StaticResource SliderWithValue}" Height="25" 
+                                        Background="#FF383838" Value="{Binding Path=OutlineColors.FloatRGBA.R, Converter={local:FloatToRGBConverter}}"
+                                        Foreground="{Binding Path=OutlineColors.FloatRGBA, Converter={local:FloatRGBToColorConverter}}"
+                                        Margin="0 0 0 15" Maximum="255"/>
+
+                                    <TextBlock Text="G" Foreground="LightGray" FontWeight="Bold" FontSize="32"/>
+                                    <Slider Style="{StaticResource SliderWithValue}" Height="25" 
+                                        Background="#FF383838" Value="{Binding Path=OutlineColors.FloatRGBA.G, Converter={local:FloatToRGBConverter}}"
+                                        Foreground="{Binding Path=OutlineColors.FloatRGBA, Converter={local:FloatRGBToColorConverter}}"
+                                        Margin="0 0 0 15" Maximum="255"/>
+
+                                    <TextBlock Text="B" Foreground="LightGray" FontWeight="Bold" FontSize="32"/>
+                                    <Slider Style="{StaticResource SliderWithValue}" Height="25" 
+                                        Background="#FF383838" Value="{Binding Path=OutlineColors.FloatRGBA.B, Converter={local:FloatToRGBConverter}}"
+                                        Foreground="{Binding Path=OutlineColors.FloatRGBA, Converter={local:FloatRGBToColorConverter}}"
+                                        Margin="0 0 0 15" Maximum="255"/>
+
+                                    <TextBlock Text="A" Foreground="LightGray" FontWeight="Bold" FontSize="32"/>
+                                    <Slider Style="{StaticResource SliderWithValue}" Height="25" 
+                                        Background="#FF383838" Value="{Binding Path=OutlineColors.FloatRGBA.A, Converter={local:FloatToRGBConverter}}"
+                                        Foreground="{Binding Path=OutlineColors.FloatRGBA, Converter={local:FloatRGBToColorConverter}}"
+                                        Margin="0 0 0 15" Maximum="255"/>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <ContentControl Style="{StaticResource ContentStyle}"/>
+</UserControl>
+

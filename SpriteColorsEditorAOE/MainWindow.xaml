@@ -1,0 +1,62 @@
+﻿<Window x:Class="SpriteColorsEditorAOE.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SpriteColorsEditorAOE"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance local:SpriteColorsEditorDesignModel, IsDesignTimeCreatable=True}"
+        Title="AOE2 Sprite Colors Editor" Width="900" Height="500" d:Width="1920" d:Height="1080" Background="#FF1F1F1F" Drop="Window_Drop" AllowDrop="True">
+    <Window.DataContext>
+            <local:SpriteColorsEditorViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid Style="{StaticResource BlurGrid}" IsEnabled="{Binding IsBusy, Converter={local:InverseBooleanConverter}}"
+              Visibility="{Binding HasSpriteColorsLoaded, Converter={local:BooleanToVisiblityConverter}}"
+              d:Visibility="Visible" d:IsEnabled="True">
+            <ScrollViewer>
+                <StackPanel Margin="10">
+                    <StackPanel Orientation="Horizontal">
+                        <Viewbox HorizontalAlignment="Left" MaxHeight="50" Margin="0 0 15 0">
+                            <Button Name="BtnExport"  Style="{StaticResource IconButton}" Content="Export" Tag="{StaticResource FAExport}"
+                                Background="#FF2E2E2E" Cursor="Hand" Click="BtnExport_Click"/>
+                        </Viewbox>
+                        <Viewbox HorizontalAlignment="Left" MaxHeight="50">
+                            <Button Name="BtnClose"  Style="{StaticResource IconButton}" Content="Close" Tag="{StaticResource FAWindowClose}"
+                                Background="#FF2E2E2E" Cursor="Hand" Click="BtnClose_Click"/>
+                        </Viewbox>
+                    </StackPanel>
+
+                    <ItemsControl ItemsSource="{Binding PlayerColors}" HorizontalAlignment="Center">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <local:AlignableWrapPanel HorizontalContentAlignment="Center"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <local:PlayerColorsEditorControl/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+        <Grid Style="{StaticResource BlurOpacityGrid}" IsEnabled="{Binding HasSpriteColorsLoaded,Converter={local:InverseBooleanConverter}}" 
+              Visibility="{Binding HasSpriteColorsLoaded, Converter={local:BooleanToVisiblityConverter}, ConverterParameter=False}"
+              d:Visibility="Hidden">
+            <local:SpriteColorsPickerControl MouseLeftButtonUp="SpriteColorsPickerControl_MouseLeftButtonUp" Drop="SpriteColorsPickerControl_Drop" />
+        </Grid>
+
+
+
+        <Grid Style="{StaticResource BlurOpacityGrid}" IsEnabled="{Binding IsBusy}" 
+              Visibility="{Binding IsBusy, Converter={local:BooleanToVisiblityConverter}}"
+              d:Visibility="Hidden">
+            <Viewbox MaxHeight="100">
+                <TextBlock Text="Saving spritecolors file" Foreground="LightGray" Background="#BF000000" Padding="2"/>
+            </Viewbox>
+        </Grid>
+    </Grid>
+</Window>

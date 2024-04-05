@@ -33,6 +33,17 @@ Change the Outline and Player Color for each Player (Gaia, Player 1, Player 2, e
 }
 ```
 
+<br />
+<br />
+
+> [!TIP]
+> The spritecolor files can usually be found in:
+> ```
+> C:\Program Files (x86)\Steam\steamapps\common\AoE2DE\resources\_common\palettes
+> ```
+<br />
+<br />
+
 tested for Update 108769
 
 ---
